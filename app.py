@@ -1,5 +1,5 @@
 """
-Falconnet Demo - Interactive Neural Network Visualization & Attack Analysis
+FALCONNet Demo - Interactive Neural Network Visualization & Attack Analysis
 -----------------------------------------------------------------------
 An interactive application for visualizing and analyzing the behavior of Siamese and 
 Prototypical Networks under various adversarial attacks.
@@ -22,12 +22,12 @@ from prototypical_page import prototypical_network_page
 # Configure the main page layout
 st.set_page_config(
     layout="wide",
-    page_title="Falconnet Demo",
+    page_title="FALCONNet Demo",
     page_icon="🦅",
 )
 
 def home_page():
-    st.title("🦅 Welcome to Falconnet Demo")
+    st.title("🦅 Welcome to FALCONNet Demo")
     
     # Hero section with description
     st.markdown("""
@@ -41,7 +41,7 @@ def home_page():
     }
     </style>
     <div class="hero">
-        <h2>About Falconnet</h2>
+        <h2>About FALCONNet</h2>
         <p style="font-size: 1.2em;">
         This demo showcases the behavior and robustness of different neural network architectures 
         under adversarial attacks.
@@ -49,26 +49,6 @@ def home_page():
     </div>
     """, unsafe_allow_html=True)
     
-    st.header("🚀 Explore Different Aspects of Neural Networks")
-    st.markdown("Choose a section below to start exploring:")
-    
-    col1, col2 = st.columns(2)
-    
-    with col1:
-        if st.button("🎨 Draw Character & Attack", use_container_width=True):
-            st.session_state.page = "Draw Character & Attack"
-        if st.button("📊 Metrics & Visualizations", use_container_width=True):
-            st.session_state.page = "Metrics & Visualizations"
-        if st.button("🌐 Prototypical Network Visualization", use_container_width=True):
-            st.session_state.page = "Prototypical Network Visualization"
-    
-    with col2:
-        if st.button("📂 Choose Character & Attack", use_container_width=True):
-            st.session_state.page = "Choose Character & Attack"
-        if st.button("🔗 Siamese Network Visualization", use_container_width=True):
-            st.session_state.page = "Siamese Network Visualization"
-
-    # Add some descriptive content below
     st.markdown("---")
     st.header("✨ Key Features")
     
@@ -87,9 +67,19 @@ def home_page():
 if 'page' not in st.session_state:
     st.session_state.page = 'Home'
 
-# Add a home button in the sidebar
-if st.sidebar.button('🏠 Home'):
-    st.session_state.page = 'Home'
+# Sidebar navigation with all main pages
+st.sidebar.title('🦅 FALCONNet Navigation')
+page_options = [
+    'Home',
+    'Draw Character & Attack',
+    'Choose Character & Attack',
+    'Metrics & Visualizations',
+    'Siamese Network Visualization',
+    'Prototypical Network Visualization'
+]
+selected = st.sidebar.radio('Go to', page_options, index=page_options.index(st.session_state.page))
+if selected != st.session_state.page:
+    st.session_state.page = selected
 
 # Route to appropriate page
 if st.session_state.page == 'Home':

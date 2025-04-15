@@ -1,10 +1,11 @@
 import streamlit as st
-from PIL import Image
-from attacks import apply_attack
-from image_utils import compute_mse, compute_difference_heatmap, load_sample_characters
 
 
 def select_character_attack_page():
+    from PIL import Image
+    from attacks import apply_attack
+    from image_utils import compute_mse, compute_difference_heatmap, load_sample_characters
+
     st.title("📂 Choose Character & Attack Playground")
 
     st.markdown("""

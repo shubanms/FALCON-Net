@@ -1,12 +1,12 @@
 import streamlit as st
-from PIL import Image
-import numpy as np
-from streamlit_drawable_canvas import st_canvas
-from attacks import apply_attack
-from image_utils import compute_mse, compute_difference_heatmap
-
 
 def draw_character_attack_page():
+    import numpy as np
+    from PIL import Image
+    from streamlit_drawable_canvas import st_canvas
+    from attacks import apply_attack
+    from image_utils import compute_mse, compute_difference_heatmap
+
     st.title("🖌️ Draw Character & Attack Playground")
 
     st.markdown("""

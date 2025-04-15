@@ -1,14 +1,10 @@
 import streamlit as st
-import numpy as np
-from keras.models import Model
-from keras.layers import Input, Conv2D, MaxPooling2D, Flatten, Dense, Lambda, LeakyReLU
-from keras import backend as K
-from PIL import Image
-from image_utils import load_sample_characters
-import matplotlib.pyplot as plt
-from attacks import apply_attack
 
 def build_siamese_network():
+    from keras.models import Model
+    from keras.layers import Input, Conv2D, MaxPooling2D, Flatten, Dense, Lambda, LeakyReLU
+    from keras import backend as K
+
     input_shape = (28, 28, 1)
     input_a = Input(shape=input_shape, name="Input_A")
     input_b = Input(shape=input_shape, name="Input_B")
@@ -45,6 +41,9 @@ def build_siamese_network():
     return model
 
 def build_visualization_network():
+    from keras.models import Model
+    from keras.layers import Input, Conv2D, MaxPooling2D, Flatten, Dense, LeakyReLU
+
     input_shape = (28, 28, 1)
     input_layer = Input(shape=input_shape, name="vis_input")
     
@@ -62,6 +61,13 @@ def build_visualization_network():
     return model
 
 def siamese_network_page():
+    import matplotlib.pyplot as plt
+    import numpy as np
+    from PIL import Image
+    from image_utils import load_sample_characters
+    from attacks import apply_attack
+    from keras.models import Model
+
     st.title("🔗 Siamese Network Visualization")
 
     st.markdown("""

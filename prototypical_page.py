@@ -1,12 +1,13 @@
 import streamlit as st
-import numpy as np
-from PIL import Image
-from image_utils import load_sample_characters
-from attacks import apply_attack
-import matplotlib.pyplot as plt
-from sklearn.decomposition import PCA
 
 def prototypical_network_page():
+    import numpy as np
+    from PIL import Image
+    from image_utils import load_sample_characters
+    from attacks import apply_attack
+    import matplotlib.pyplot as plt
+    from sklearn.decomposition import PCA
+
     st.title("🌐 Prototypical Network Visualization")
 
     st.markdown("""
